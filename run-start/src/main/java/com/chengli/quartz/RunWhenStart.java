@@ -9,10 +9,10 @@ import java.util.Properties;
 
 /**
  * quartz定时任务，想让服务启动就执行一次，然后再按照cron配置时间定时执行
- *
- * 设置两个参数：
- *  misfireInstruction 属性致为1
- *  startTime 属性设置一个已经过去的时间
+ * <p>
+ * CronTrigger设置两个参数：
+ * misfireInstruction 属性致为1
+ * startTime 属性设置一个已经过去的时间
  * Created by chengli on 2015/11/19.
  */
 public class RunWhenStart {
