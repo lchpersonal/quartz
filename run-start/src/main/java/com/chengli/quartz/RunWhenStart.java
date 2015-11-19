@@ -24,7 +24,7 @@ public class RunWhenStart {
         Scheduler sched = sf.getScheduler();
         JobDetail job = JobBuilder.newJob(HelloJob.class).withIdentity("job1", "group1").build();
         CronTriggerImpl trigger = new CronTriggerImpl();
-        trigger.setMisfireInstruction(CronTrigger.MISFIRE_INSTRUCTION_FIRE_ONCE_NOW);
+        trigger.setMisfireInstruction(CronTrigger.MISFIRE_INSTRUCTION_FIRE_ONCE_NOW);  //错过执行时间，启动立即执行一次
         Date startTime = new Date();
         startTime.setTime(1447858389036L);
         trigger.setStartTime(startTime);
