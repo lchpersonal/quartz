@@ -14,6 +14,11 @@ public class ConcurrentJob implements Job {
     @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
         System.out.println("并行job");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         realJob.run();
     }
 

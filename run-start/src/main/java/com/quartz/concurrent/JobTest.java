@@ -23,7 +23,7 @@ public class JobTest {
                 .withIdentity("concurrentJob", "group")
                 .setJobData(dataMap).build();
         CronTriggerImpl trigger = new CronTriggerImpl();
-        trigger.setCronExpression("0/5 * * * * ?");
+        trigger.setCronExpression("0/1 * * * * ?");
         trigger.setName("trigger");
         scheduler.scheduleJob(jobDetail, trigger);
         scheduler.start();
