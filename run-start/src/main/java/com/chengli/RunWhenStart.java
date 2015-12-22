@@ -1,10 +1,12 @@
-package com.chengli.quartz;
+package com.chengli;
 
-import org.quartz.*;
+import org.quartz.JobBuilder;
+import org.quartz.JobDetail;
+import org.quartz.Scheduler;
+import org.quartz.SchedulerFactory;
 import org.quartz.impl.StdSchedulerFactory;
 import org.quartz.impl.triggers.CronTriggerImpl;
 
-import java.util.Date;
 import java.util.Properties;
 
 /**
@@ -22,13 +24,15 @@ public class RunWhenStart {
         properties.put("org.quartz.threadPool.threadPriority", "5");
         SchedulerFactory sf = new StdSchedulerFactory(properties);
         Scheduler sched = sf.getScheduler();
+        /*sched.getListenerManager().addJobListener(new MyJobListener());
+        sched.getListenerManager().addTriggerListener(new MyTriggerListener());*/
         JobDetail job = JobBuilder.newJob(HelloJob.class).withIdentity("job1", "group1").build();
         CronTriggerImpl trigger = new CronTriggerImpl();
-        trigger.setMisfireInstruction(CronTrigger.MISFIRE_INSTRUCTION_FIRE_ONCE_NOW);  //错过执行时间，启动立即执行一次
+      /*  trigger.setMisfireInstruction(CronTrigger.MISFIRE_INSTRUCTION_FIRE_ONCE_NOW);  //错过执行时间，启动立即执行一次
         Date startTime = new Date();
         startTime.setTime(1447858389036L);
-        trigger.setStartTime(startTime);
-        trigger.setCronExpression("0 0/1 * ? * *");
+        trigger.setStartTime(startTime);*/
+        trigger.setCronExpression("* 0/5 * * * ?");
         trigger.setName("mytrigger");
         // 注册并进行调度
         sched.scheduleJob(job, trigger);
